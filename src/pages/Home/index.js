@@ -2,7 +2,10 @@ import React from 'react';
 
 const Home = ()=> {
   return (
-    <div>Home Page</div>
+    <>
+      <button onClick={() => alert('wwwww')}>点击</button>
+      <div>Home asdas</div>
+    </>
   )
 }
 
