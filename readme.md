@@ -4,3 +4,12 @@
 
 ## webpack优化
 webpack-merge：合并webpack配置项
+
+
+## 路由
+
+- 服务器端路由
+`staticRouter`
+
+- 客户端路由
+`BrowserRouter`

@@ -6,7 +6,7 @@ const Home = ()=> {
     <>
       <Header />
       <button onClick={() => alert('wwwww')}>点击</button>
-      <div>Home asdas</div>
+      <div>Login</div>
     </>
   )
 }

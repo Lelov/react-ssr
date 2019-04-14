@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Home from '../pages/Home';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from '../Routes';
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      {Routes}
+    </BrowserRouter>
+  )
+}
 
 // 渲染client的组件
-ReactDom.hydrate(<Home />, document.getElementById('root'));
+ReactDom.hydrate(<App />, document.getElementById('root'));

@@ -1,42 +1,37 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server'; // 实现ssr的关键模块
-
-import Home from '../pages/Home';
+import { serverRender } from './util';
 
 const app = express();
 
 // 引入公共文件
 app.use(express.static('static'));
 
-// 内容
-const content = renderToString(<Home />);
-
-app.get('/', (req, res) => {
-  // res.send(
-  //   ` <html>
-  //       <head>
-  //         <title>title</title>
-  //       </head>
-  //       <body>
-  //         <h1>express page</h1>
-  //         <p>hello world</p>
-  //       </body>
-  //     </html>
-  //   `
-  // )
-
-  res.send(`
-    <html>
-      <head>
-        <title>title</title>
-      </head>
-      <body>
-        <div id="root">${content}</div>
-        <script src="/index.js"></script>
-      </body>
-    </html>
-  `)
+app.get('*', (req, res) => {
+  // 返回结果路由字符串
+  res.send(serverRender(req));
 })
 
 const server = app.listen(3000);
+
+// koa
+
+// import { serverRender } from './util';
+// const Koa = require('koa');
+// const serve = require('koa-static');
+// const app = new Koa();
+// const Router = require('koa-router');
+
+// let route = new Router();
+
+// // 引入公共文件
+// app.use(serve(__dirname, './static'))
+// route.get('*', (ctx, next)=> {
+//   console.log(ctx)
+//   console.log(next)
+//   // 返回结果路由字符串
+//   ctx.body = serverRender(ctx);
+// })
+
+// app.use(route.routes());
+
+// const server = app.listen(3000);
